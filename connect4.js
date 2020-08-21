@@ -158,14 +158,16 @@ function checkForWin() {
   }
 
   // TODO: read and understand this code. Add comments to help you.
-
+  //loop through the columns 
   for (var y = 0; y < HEIGHT; y++) {
+    //loop through the rows and...
     for (var x = 0; x < WIDTH; x++) {
+      //assign the wiining combos by hirzontal, vertical and diagonal options
       var horiz = [[y, x], [y, x + 1], [y, x + 2], [y, x + 3]];
       var vert = [[y, x], [y + 1, x], [y + 2, x], [y + 3, x]];
       var diagDR = [[y, x], [y + 1, x + 1], [y + 2, x + 2], [y + 3, x + 3]];
       var diagDL = [[y, x], [y + 1, x - 1], [y + 2, x - 2], [y + 3, x - 3]];
-
+  // if any of theses combinations are true run the code
       if (_win(horiz) || _win(vert) || _win(diagDR) || _win(diagDL)) {
         return true;
       }
