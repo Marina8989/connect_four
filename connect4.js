@@ -31,26 +31,37 @@ function makeHtmlBoard() {
   // TODO: add comment for this code
   //create a new html element tr
   var top = document.createElement("tr");
-  //set id attribute to it, so it can have border and bg color on hover
+  //set id attribute to it 
   top.setAttribute("id", "column-top");
   //add event listener and make it clickable with the callback function
   top.addEventListener("click", handleClick);
 
   for (var x = 0; x < WIDTH; x++) {
+    //create a new html el to hold the data in
     var headCell = document.createElement("td");
+    //set id attribute to it so it can have the border and bg color on hover
     headCell.setAttribute("id", x);
+    //append it to the previously created element above
     top.append(headCell);
   }
+  //append table row to the top of the board
   htmlBoard.append(top);
 
   // TODO: add comment for this code
+  //loop through each column
   for (var y = 0; y < HEIGHT; y++) {
+    //after each loop create a new row and assign it to new html el tr
     const row = document.createElement("tr");
+   //loop through each row
     for (var x = 0; x < WIDTH; x++) {
+      //each time create a new table data el
       const cell = document.createElement("td");
+      //set an attribute to each of the new td to equal to id, so they will be displayed properly on screen
       cell.setAttribute("id", `${y}-${x}`);
+      //append each cell to the row depending on the id it got
       row.append(cell);
     }
+    //append that row with all cells to the board
     htmlBoard.append(row);
   }
 }
