@@ -70,13 +70,34 @@ function makeHtmlBoard() {
 
 function findSpotForCol(x) {
   // TODO: write the real version of this, rather than always returning 0
-  return 0;
+  //loop tthrough height of the column from max to min.
+  for(let y = HEIGHT - 1; y >= 0; y--) {
+    //if it is not truthy
+      if(!board[y][x]) {
+        //return top empty y
+        return y;
+      }
+  }
+  //else return null
+  return null;
 }
 
 /** placeInTable: update DOM to place piece into HTML table of board */
 
 function placeInTable(y, x) {
   // TODO: make a div and insert into correct table cell
+  // create a new html element div
+  const newDiv = document.createElement('div');
+  //add classes to make it functional
+  newDiv.classList.add('piece');
+  newDiv.classList.add(`player${currPlayer}`);
+  //position the piece on top of the board
+  newDiv.style.top = -30 *(y + 2);
+
+  // get the elelemnt at its location
+  const location = document.getElementById(`${y}-${x}`);
+  //append the created piece to the location
+  location.append(newDiv);
 }
 
 /** endGame: announce game end */
