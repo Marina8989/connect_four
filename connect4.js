@@ -5,8 +5,8 @@
  * board fills (tie)
  */
 
-var WIDTH = 7;
-var HEIGHT = 6;
+var WIDTH = 7; // x
+var HEIGHT = 6; // y
 
 var currPlayer = 1; // active player: 1 or 2
 var board = []; // array of rows, each row is array of cells  (board[y][x])
@@ -17,16 +17,23 @@ var board = []; // array of rows, each row is array of cells  (board[y][x])
 
 function makeBoard() {
   // TODO: set "board" to empty HEIGHT x WIDTH matrix array
+  for(let y = 0; y < HEIGHT; y++) {
+     board.push(Array.from({length: WIDTH}));
+  }
+  console.log(board);
 }
 
 /** makeHtmlBoard: make HTML table and row of column tops. */
 
 function makeHtmlBoard() {
   // TODO: get "htmlBoard" variable from the item in HTML w/ID of "board"
-
+  const htmlBoard = document.querySelector('#board');
   // TODO: add comment for this code
+  //create a new html element tr
   var top = document.createElement("tr");
+  //set id attribute to it, so it can have border and bg color on hover
   top.setAttribute("id", "column-top");
+  //add event listener and make it clickable with the callback function
   top.addEventListener("click", handleClick);
 
   for (var x = 0; x < WIDTH; x++) {
